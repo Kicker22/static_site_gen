@@ -27,6 +27,8 @@ class TestTextNode(unittest.TestCase):
     def test_not_equal_different_type(self):
         node = TextNode("hi", TextType.BOLD)
         self.assertNotEqual(node, "not a TextNode")
+
+
         
 if __name__ == "__main__":
     unittest.main()
