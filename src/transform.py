@@ -1,3 +1,4 @@
+import re
 from htmlnode import LeafNode
 from textnode import TextType, TextNode
 
@@ -16,3 +17,10 @@ def text_node_to_html_node(text_node):
         return LeafNode("img", "", {"src": text_node.url, "alt": text_node.text})
     else:
         raise ValueError(f"Unsupported text type: {text_node.text_type}")
+    
+
+def extract_markdown_images(text):
+    return re.findall(r'!\[(.*?)\]\((.*?)\)', text)
+
+def extract_markdown_links(text):
+    return re.findall(r'(?<!!)\[(.*?)\]\((.*?)\)', text)
